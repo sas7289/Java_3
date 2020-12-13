@@ -17,6 +17,9 @@ public class Queries {
 
         try {
             getCoast("product1");
+            setCoast("product1", 1111);
+            getCoast("product1");
+            getProducts(5000, 10000);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -30,21 +33,27 @@ public class Queries {
 
     }
 
+    private static void getProducts(int begin, int end) throws SQLException {
+        rs = stmt.executeQuery(String.format("SELECT * FROM products WHERE good_price BETWEEN %d AND %d", begin, end));
+        while (rs.next()) {
+            System.out.printf("%s %d%n", rs.getString("good_name"), rs.getInt("good_price"));
+        }
+    }
+
+    private static void setCoast(String nameProduct, int coast) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE products SET good_price = %d WHERE good_name = '%s'", coast, nameProduct));
+    }
+
     private static void disconnect() throws SQLException {
         stmt.close();
     }
 
     private static void getCoast(String nameProduct) throws SQLException {
         rs = stmt.executeQuery(String.format("SELECT good_price FROM products WHERE good_name = '%s'", nameProduct));
-/*        rs.next();
-        if(rs.next()) {*/
-//        boolean temp = rs.next();
-//            int coast = rs.getInt("good_price");
-        String result = rs.next() ? String.valueOf(rs.getInt("good_price")) : "Такого товара нет";
+
+        String result = rs.next() ? String.valueOf(rs.getInt("good_price") + "\n") : "Такого товара нет\n";
         System.out.printf(result);
-/*        }
-        int coast = rs.getInt("good_price");
-        System.out.printf(coast == 0 ? "Такого товара нет" : "%d", coast);*/
+
     }
 
     private static void connection() throws ClassNotFoundException, SQLException {
