@@ -1,7 +1,10 @@
 package Lesson_4;
 
+import Lesson_4.MFU.MFU;
+
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -18,10 +21,43 @@ public class MyThreads {
         new Thread(new ThreadShowCHar(sequence, 'C')).start();*/
 
         //Task 2
-        writeFile();
+    /*    writeFile();*/
 
 
+        //Task 3
+
+        testMFU();
+        }
+
+    private static void testMFU() {
+        MFU mfu = new MFU();
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                try {
+                    for (int j = 0; j < 10; j++) {
+                        Thread.sleep(1500);
+                        mfu.print(Thread.currentThread().getName());
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
+        for (int i = 0; i < 10; i++) {
+            new Thread(() -> {
+                try {
+                    for (int j = 0; j < 10; j++) {
+                        Thread.sleep(1500);
+                        mfu.scan(Thread.currentThread().getName());
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
     }
+
+
 
 
     public static void writeFile() {
@@ -61,13 +97,6 @@ public class MyThreads {
                 }
             }
         }).start();
-
-
-//        WritebleFile wf = new WritebleFile();
-//        ThreadForFile tf1 = new ThreadForFile(wf, "thread_1");
-//        ThreadForFile tf2 = new ThreadForFile(wf, "thread_2");
-//        ThreadForFile tf3 = new ThreadForFile(wf, "thread_3");
-
     }
 
 
