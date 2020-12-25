@@ -15,13 +15,14 @@ public class MyThreads {
     public static void main(String[] args) {
 
         //Task 1
-/*        Sequence sequence = new Sequence();
-        new Thread(new ThreadShowCHar(sequence, 'A')).start();
-        new Thread(new ThreadShowCHar(sequence, 'B')).start();
-        new Thread(new ThreadShowCHar(sequence, 'C')).start();*/
+//        Sequence sequence = new Sequence();
+//        new Thread(new ThreadShowCHar(sequence, 'A')).start();
+//        new Thread(new ThreadShowCHar(sequence, 'B')).start();
+//        new Thread(new ThreadShowCHar(sequence, 'C')).start();
 
+        
         //Task 2
-    /*    writeFile();*/
+//        writeFile();
 
 
         //Task 3
