@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.TimeUnit;
 
 public class Race {
     private boolean winnerFlag;
