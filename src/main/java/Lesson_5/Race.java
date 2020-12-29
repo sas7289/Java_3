@@ -35,11 +35,11 @@ public class Race {
         return cyclicBarrier;
     }
 
-    public boolean isWinnerFlag() {
+    synchronized public boolean isWinnerFlag() {
         return winnerFlag;
     }
 
-    public void setWinnerFlag(boolean winnerFlag) {
+    synchronized public void setWinnerFlag(boolean winnerFlag) {
         this.winnerFlag = winnerFlag;
     }
 }
